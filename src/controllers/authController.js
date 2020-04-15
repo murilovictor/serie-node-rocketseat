@@ -1,6 +1,25 @@
 const express = require('express')
 const User = require('../models/User')
 const router = express.Router()
+const bcrypt = require('bcryptjs')
+
+
+router.post('/authenticate', async (req, res) => {
+    const { email, password } = req.body;
+
+    const user = await User.findOne( { email }).select('+password')
+
+    if(!user || !await bcrypt.compare(password, user.password)) {
+        return res.status(401).send({ error: 'User or Password invalid.' })
+    }
+
+    // removendo password
+    user.password = undefined
+
+    res.send ({ user })
+})
+
+
 
 router.post('/register', async (req, res) => {
     const { email } = req.body;
