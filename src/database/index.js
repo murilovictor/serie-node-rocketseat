@@ -7,6 +7,7 @@ mongoose.connect('mongodb://localhost:27017/noderest', {
     useUnifiedTopology: true,
     useNewUrlParser: true,
     useCreateIndex: true,
+    useFindAndModify: false
 }, (err) => {
     if (!err) {
         console.log('MongoDB Connection Succeeded.')
