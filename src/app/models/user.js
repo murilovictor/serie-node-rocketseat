@@ -1,4 +1,4 @@
-const mongoose = require('./../database')
+const mongoose = require('../../database')
 const bcrypt = require('bcryptjs') // Erase if already required
 
 // Declare the Schema of the Mongo model

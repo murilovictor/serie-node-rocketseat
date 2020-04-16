@@ -6,7 +6,6 @@ const port = 3000
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
 
-require('./controllers/authController')(app)
-require('./controllers/projectController')(app)
+require('./app/controllers/index')(app)
 
 app.listen(port, () => console.log(`App listening on port ${port}!`))
